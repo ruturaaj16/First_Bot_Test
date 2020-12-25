@@ -23,11 +23,19 @@ client.on('message', msg => {
         msg.react("✌")
         msg.channel.send(`Oh! Yes I am ${msg.member}`)
     }
-    if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
+    else if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
         // msg.channel.send("Not tagged!")
         // msg.reply("Pong!")
-        modUser(msg.member)
-        
+        modUser(msg.member)        
+    }
+    else if (msg.content.toLowerCase() === "wtf" || msg.content.toLowerCase() === "tf" || msg.content.toLowerCase() === "fuck") {
+        msg.channel.send("Stop using bad words or else you will be thrown out of this server!")
+        msg.react("😡👿")
+    }
+
+    else if (msg.content.toLowerCase() === "good morning" || msg.content.toLowerCase() === "good evening" || msg.content.toLowerCase() === "good afternoon" || msg.content.toLowerCase() === "good night") {
+        msg.react("😉")
+        msg.channel.send("Same to you!")
     }
 })
 
