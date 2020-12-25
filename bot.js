@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client({
     partials: ["MESSAGE"]
 });
+const PORT = process.env.PORT || 3000
 
 let modded = false;
 
@@ -49,4 +50,15 @@ function modUser(member) {
     }
 }
 
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
+
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send("Our Bot Is Running Successfully! Congratulations!")
+})
+
+app.listen(PORT, () => {
+    console.log(`Listening on http://localhost:${PORT}`)
+})
