@@ -20,20 +20,15 @@ client.on('messageDelete', msg => {
 })
 
 client.on('message', msg => {
-    if (msg.content === "is anyone online?" || msg.content === "Is anyone online here?") {
+    if (msg.content.toLowerCase().includes('online')) {
         msg.react("✌")
         msg.channel.send(`Oh! Yes I am ${msg.member}`)
     }
     else if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
-        // msg.channel.send("Not tagged!")
-        // msg.reply("Pong!")
+        msg.channel.send("Not tagged!")
+        msg.reply("Pong!")
         modUser(msg.member)        
     }
-    else if (msg.content.toLowerCase() === "wtf" || msg.content.toLowerCase() === "tf" || msg.content.toLowerCase() === "fuck") {
-        msg.channel.send("Stop using bad words or else you will be thrown out of this server!")
-        msg.react("😡👿")
-    }
-
     else if (msg.content.toLowerCase() === "good morning" || msg.content.toLowerCase() === "good evening" || msg.content.toLowerCase() === "good afternoon" || msg.content.toLowerCase() === "good night") {
         msg.react("😉")
         msg.channel.send("Same to you!")
